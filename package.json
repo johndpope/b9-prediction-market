@@ -1,0 +1,13 @@
+{
+  "name": "b9-prediction-market",
+  "version": "1.0.0",
+  "description": "",
+  "devDependencies": {
+    "@digix/tempo": "^0.2.0",
+    "bluebird": "^3.5.0",
+    "truffle": "^3.4.3"
+  },
+  "dependencies": {
+    "solc": "^0.4.13"
+  }
+}
