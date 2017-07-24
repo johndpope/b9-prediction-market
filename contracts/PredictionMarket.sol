@@ -35,18 +35,43 @@ contract PredictionMarket
 
     uint constant DECIMALS = 18;
 
+    event LogAddAdmin(address whoAdded, address newAdmin);
     event LogAddQuestion(address whoAdded, bytes32 questionID, string question, uint betDeadlineBlock, uint voteDeadlineBlock);
     event LogAddTrustedSource(address whoAdded, address trustedSource);
     event LogBet(address bettor, bytes32 questionID, Vote vote, uint betAmount);
     event LogVote(address trustedSource, bytes32 questionID, Vote vote);
     event LogWithdraw(address who, bytes32 questionID, uint amount);
 
-    function PredictionMarket(address[] admins) {
-        // require(admins.length > 0);
+    function PredictionMarket() {
+        // @@TODO: test this value
+        isAdmin[msg.sender] = true;
+    }
 
-        for (uint i = 0; i < admins.length; i++) {
-            isAdmin[admins[i]] = true;
-        }
+    // @@TODO: test this function
+    function numQuestions()
+        constant
+        returns (uint)
+    {
+        return questionIDs.length;
+    }
+
+    function getAllQuestionIDs()
+        constant
+        returns (bytes32[])
+    {
+        return questionIDs;
+    }
+
+    // @@TODO: test this function
+    function addAdmin(address admin)
+        onlyAdmin
+        returns (bool ok)
+    {
+        require(isAdmin[admin] == false);
+        isAdmin[admin] = true;
+
+        LogAddAdmin(msg.sender, admin);
+        return true;
     }
 
     function addTrustedSource(address source)
@@ -186,10 +211,6 @@ contract PredictionMarket
 
         LogWithdraw(msg.sender, questionID, withdrawAmount);
         return true;
-    }
-
-    function numQuestions() constant returns (uint) {
-        return questionIDs.length;
     }
 
     function getBet(bytes32 questionID, address bettor)

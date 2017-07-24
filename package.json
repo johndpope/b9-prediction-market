@@ -4,10 +4,26 @@
   "description": "",
   "devDependencies": {
     "@digix/tempo": "^0.2.0",
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
     "bluebird": "^3.5.0",
-    "truffle": "^3.4.3"
+    "copy-webpack-plugin": "^4.0.1",
+    "json-loader": "^0.5.4",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "truffle": "^3.4.3",
+    "webpack": "^3.3.0"
   },
   "dependencies": {
-    "solc": "^0.4.13"
+    "lodash": "^4.17.4",
+    "solc": "^0.4.13",
+    "truffle-contract": "^2.0.1",
+    "web3": "^0.20.1"
   }
 }
